@@ -1,7 +1,14 @@
+require("./models/User");
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
+
+// Parse JSON out of data before sending to routes
+app.use(bodyParser.json());
+app.use(authRoutes);
 
 const mongoUri =
   "mongodb+srv://bburnett86:Eazy3299@track-app.weakjpm.mongodb.net/?retryWrites=true&w=majority";
